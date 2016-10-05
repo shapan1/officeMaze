@@ -135,11 +135,9 @@ public class officeMaze extends JPanel {
     public void paintComponent(Graphics g) {
         w = 50;
         h = 50;
-        // could have taken height as well as width
-        // just need something to base the roomsize
+        // use width to randomise.
         size = (width - w) / width + 20;
 
-        // temp variables used for painting
         int x = w;
         int y = h;
 
@@ -147,19 +145,19 @@ public class officeMaze extends JPanel {
             for (int j = 0; j <= width - 1; j++) {
                 if (!(rooms[i][j].top.isWallPresent)) {
                     g.drawLine(x, y, x + size, y);
-                } // end of north if
-                  // west wall not there draw the line
+                }
+                // draw the left wall, if not there
                 if (rooms[i][j].left.isWallPresent == false) {
                     g.drawLine(x, y, x, y + size);
-                } // end of west if
+                }
                 if ((i == height - 1) && rooms[i][j].bottom.isWallPresent == false) {
                     g.drawLine(x, y + size, x + size, y + size);
-                } // end of south if
+                }
                 if ((j == width - 1) && rooms[i][j].right.isWallPresent == false) {
                     g.drawLine(x + size, y, x + size, y + size);
-                } // end of east if
-                x += size;// change the horizontal
-            } // end of inner for loop
+                }
+                x += size;
+            }
             x = w;
             y += size;
         }
